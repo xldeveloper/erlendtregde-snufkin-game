@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://d0jqutw3c62wv"]
+[gd_scene load_steps=35 format=3 uid="uid://d0jqutw3c62wv"]
 
 [ext_resource type="Texture2D" uid="uid://cfwm52xurxriy" path="res://assets/images/Mountan.png" id="1_52jxg"]
 [ext_resource type="PackedScene" uid="uid://cu4vgvuaexi2s" path="res://scenes/player.tscn" id="1_g03jv"]
@@ -21,6 +21,8 @@
 [ext_resource type="Texture2D" uid="uid://barbanunh1amr" path="res://assets/images/tent.png" id="18_dp3eg"]
 [ext_resource type="Texture2D" uid="uid://c2cxntss3lbry" path="res://assets/images/fire1.png" id="19_0ld40"]
 [ext_resource type="Texture2D" uid="uid://dbqty7vkf11uv" path="res://assets/images/fire22.png" id="20_gqmmt"]
+[ext_resource type="Script" uid="uid://b2wf1r3xdhp76" path="res://scripts/map_opener.gd" id="22_map_opener"]
+[ext_resource type="Script" uid="uid://b3iof5ixfo67" path="res://scripts/location_tracker.gd" id="23_location_tracker"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a8y0u"]
 size = Vector2(28.871292, 16.789165)
@@ -32,6 +34,21 @@ size = Vector2(6, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ftqk5"]
 size = Vector2(385.5, 276)
+
+[sub_resource type="Animation" id="Animation_y6deb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("11_gqmmt")]
+}
 
 [sub_resource type="Animation" id="Animation_pm3ni"]
 resource_name = "water"
@@ -47,21 +64,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [ExtResource("11_gqmmt"), ExtResource("13_yc10j"), ExtResource("11_gqmmt")]
-}
-
-[sub_resource type="Animation" id="Animation_y6deb"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("11_gqmmt")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_og1vs"]
@@ -119,7 +121,7 @@ scale = Vector2(1.5, 1.5)
 script = ExtResource("5_trceg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HouseEntrance"]
-position = Vector2(9.666626, 238.66666)
+position = Vector2(-4.005432e-05, 233.33333)
 rotation = -3.1415925
 scale = Vector2(4.0409255, -6.1944723)
 shape = SubResource("RectangleShape2D_a8y0u")
@@ -334,6 +336,12 @@ position = Vector2(-2072, 1154)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D"]
 position = Vector2(0, -53.75)
 shape = SubResource("RectangleShape2D_yc10j")
+
+[node name="MapOpener" type="Node" parent="."]
+script = ExtResource("22_map_opener")
+
+[node name="LocationTracker" type="Node" parent="."]
+script = ExtResource("23_location_tracker")
 
 [connection signal="body_entered" from="HouseEntrance" to="HouseEntrance" method="_on_body_entered"]
 [connection signal="body_exited" from="HouseEntrance" to="HouseEntrance" method="_on_body_exited"]

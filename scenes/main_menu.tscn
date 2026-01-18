@@ -1,0 +1,167 @@
+[gd_scene load_steps=3 format=3 uid="uid://lengbn2ygq00"]
+
+[ext_resource type="Script" uid="uid://davwc5vwk1m0c" path="res://scripts/main_menu.gd" id="1_main_menu"]
+[ext_resource type="Texture2D" uid="uid://dxq4efhlrxub2" path="res://dialague/Images/idleSmokeing.png" id="2_snufkin_idle"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_main_menu")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.918, 0.898, 0.839, 1)
+
+[node name="BackgroundTexture" type="ColorRect" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.247, 0.275, 0.235, 0.039)
+
+[node name="MainContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LeftPanel" type="MarginContainer" parent="MainContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.2
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 60
+
+[node name="ContentVBox" type="VBoxContainer" parent="MainContainer/LeftPanel"]
+layout_mode = 2
+theme_override_constants/separation = 35
+
+[node name="TitleContainer" type="VBoxContainer" parent="MainContainer/LeftPanel/ContentVBox"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="MainContainer/LeftPanel/ContentVBox/TitleContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.224, 0.369, 0.216, 1)
+theme_override_colors/font_outline_color = Color(0.918, 0.898, 0.839, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 72
+text = "Snufkin's Journey"
+
+[node name="Subtitle" type="Label" parent="MainContainer/LeftPanel/ContentVBox/TitleContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.35, 0.3, 1)
+theme_override_font_sizes/font_size = 26
+text = "A Peaceful Adventure in Moominvalley"
+
+[node name="Spacer1" type="Control" parent="MainContainer/LeftPanel/ContentVBox"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="AboutTitle" type="Label" parent="MainContainer/LeftPanel/ContentVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.298, 0.247, 0.196, 1)
+theme_override_font_sizes/font_size = 32
+text = "About"
+
+[node name="AboutText" type="RichTextLabel" parent="MainContainer/LeftPanel/ContentVBox"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.247, 0.2, 0.157, 1)
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "Wander through Moominvalley as Snufkin. Fish by the bridge, visit friends at the Moomin House, and rest by your tent. Use the map to travel between  locations."
+fit_content = true
+scroll_active = false
+
+[node name="ControlsTitle" type="Label" parent="MainContainer/LeftPanel/ContentVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.298, 0.247, 0.196, 1)
+theme_override_font_sizes/font_size = 32
+text = "Controls"
+
+[node name="ControlsList" type="RichTextLabel" parent="MainContainer/LeftPanel/ContentVBox"]
+custom_minimum_size = Vector2(0, 180)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.247, 0.2, 0.157, 1)
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[b]Movement[/b] — Arrow keys or A/D
+[b]Interact[/b] — E
+[b]Open Map[/b] — M
+[b]Close Map[/b] — Esc
+
+[b]Map Navigation[/b]
+Left click on a location to travel to it
+Right click to drag snufkin along"
+fit_content = true
+scroll_active = false
+
+[node name="Spacer3" type="Control" parent="MainContainer/LeftPanel/ContentVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="StartButton" type="Button" parent="MainContainer/LeftPanel/ContentVBox"]
+custom_minimum_size = Vector2(320, 70)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.918, 0.898, 0.839, 1)
+theme_override_colors/font_pressed_color = Color(0.918, 0.898, 0.839, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+text = "Begin Journey"
+
+[node name="RightPanel" type="MarginContainer" parent="MainContainer"]
+z_index = 4096
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 80
+theme_override_constants/margin_bottom = 100
+
+[node name="CharacterContainer" type="CenterContainer" parent="MainContainer/RightPanel"]
+layout_mode = 2
+
+[node name="SnufkinImage" type="TextureRect" parent="MainContainer/RightPanel/CharacterContainer"]
+z_index = 4096
+custom_minimum_size = Vector2(600, 600)
+layout_mode = 2
+texture = ExtResource("2_snufkin_idle")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VersionLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -35.0
+offset_right = -15.0
+offset_bottom = -10.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.6, 0.55, 0.5, 0.5)
+theme_override_font_sizes/font_size = 16
+text = "v0.1.0"
+horizontal_alignment = 2
+
+[connection signal="pressed" from="MainContainer/LeftPanel/ContentVBox/StartButton" to="." method="_on_start_button_pressed"]

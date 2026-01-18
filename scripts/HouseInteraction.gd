@@ -22,7 +22,6 @@ func _on_body_exited(body):
 
 func _process(_delta):
 	if entered and Input.is_action_just_pressed("interact"):
-		if player_character_body:
-			Global.save_position(player_character_body.global_position)
-		
+		# Update location to moomin_house before entering
+		Global.current_location = "moomin_house"
 		get_tree().change_scene_to_file("res://scenes/house_interior.tscn")

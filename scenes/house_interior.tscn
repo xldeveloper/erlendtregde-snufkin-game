@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://du1qq3tmfxss7"]
+[gd_scene load_steps=7 format=3 uid="uid://du1qq3tmfxss7"]
 
 [ext_resource type="Script" path="res://scripts/ExitHouse.gd" id="1_6po8i"]
 [ext_resource type="Script" uid="uid://blnpkalalldos" path="res://scripts/HouseInteriorController.gd" id="1_controller"]
 [ext_resource type="PackedScene" uid="uid://cu4vgvuaexi2s" path="res://scenes/player.tscn" id="1_house"]
+[ext_resource type="Script" path="res://scripts/map_opener.gd" id="4_map_opener"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_floor"]
 size = Vector2(2000, 100)
@@ -64,6 +65,9 @@ offset_bottom = 220.0
 theme_override_font_sizes/font_size = 32
 text = "Inside Moomin House"
 horizontal_alignment = 1
+
+[node name="MapOpener" type="Node" parent="."]
+script = ExtResource("4_map_opener")
 
 [connection signal="body_entered" from="ExitArea" to="ExitArea" method="_on_body_entered"]
 [connection signal="body_exited" from="ExitArea" to="ExitArea" method="_on_body_exited"]

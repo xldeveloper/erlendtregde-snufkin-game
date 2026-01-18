@@ -22,17 +22,76 @@ var music_track = preload("res://assets/sound/harmonica-solo-2728.mp3")
 func _ready():
 	await get_tree().process_frame  # Ensure everything loads
 	
-	# Check if we're in the house interior scene - if so, don't load saved position
+	# Check which scene we're in and spawn accordingly
 	var current_scene = get_tree().current_scene.name
-	if current_scene == "HouseInterior":
-		pass  # Keep default spawn position
-	else:
-		var saved_pos = Global.get_saved_position()
-		if saved_pos != Vector2.ZERO:  
-			global_position = saved_pos
+	var current_scene_path = get_tree().current_scene.scene_file_path
+	print("[Player] Current scene: ", current_scene)
+	print("[Player] Global.from_scene: '", Global.from_scene, "'")
+	print("[Player] Saved position scene: '", Global.saved_position_scene, "'")
+	
+	if current_scene == "Main":
+		# PRIORITY 1: Returning from map to SAME scene - restore exact position
+		if Global.saved_player_position != Vector2.ZERO and Global.saved_position_scene == current_scene_path:
+			print("[Player] Restoring saved position from map: ", Global.saved_player_position)
+			global_position = Global.saved_player_position
+			# Keep current_location as-is, LocationTracker will update if needed
+			Global.saved_player_position = Vector2.ZERO
+			Global.saved_position_scene = ""
+			Global.from_scene = ""  # Clear from_scene
+		# PRIORITY 2: Coming from different scene (house/fishing) - spawn at fixed points
+		elif Global.from_scene == "house_interior":
+			print("[Player] Spawning at Moomin house (from house)")
+			global_position = Vector2(2588, 921)
+			Global.current_location = "moomin_house"
+			Global.from_scene = ""
+			Global.saved_player_position = Vector2.ZERO
+			Global.saved_position_scene = ""
+		elif Global.from_scene == "fishing_scene":
+			print("[Player] Spawning at bridge (from fishing)")
+			global_position = Vector2(-1470, 1114)
+			Global.current_location = "bridge"
+			Global.from_scene = ""
+			Global.saved_player_position = Vector2.ZERO
+			Global.saved_position_scene = ""
+		# PRIORITY 3: Coming from map to NEW location - spawn at fixed points
+		elif Global.from_scene == "map_tent":
+			print("[Player] Spawning at tent (from map selection)")
+			global_position = Vector2(108, 1100)
+			Global.current_location = "tent"
+			Global.from_scene = ""
+			Global.saved_player_position = Vector2.ZERO
+			Global.saved_position_scene = ""
+		elif Global.from_scene == "map_moomin":
+			print("[Player] Spawning at Moomin house (from map selection)")
+			global_position = Vector2(2588, 921)
+			Global.current_location = "moomin_house"
+			Global.from_scene = ""
+			Global.saved_player_position = Vector2.ZERO
+			Global.saved_position_scene = ""
+		elif Global.from_scene == "map_bridge":
+			print("[Player] Spawning at bridge (from map selection)")
+			global_position = Vector2(-1470, 1114)
+			Global.current_location = "bridge"
+			Global.from_scene = ""
+			Global.saved_player_position = Vector2.ZERO
+			Global.saved_position_scene = ""
+		else:
+			# Default first spawn - keep whatever position is in the scene
+			print("[Player] Using default spawn position: ", global_position)
+			# Determine initial location based on spawn position
+			if global_position.x < 1000:
+				Global.current_location = "tent"
+			elif global_position.x >= 2000 and global_position.x < 3000:
+				Global.current_location = "moomin_house"
+			elif global_position.x >= -2000 and global_position.x < -1000:
+				Global.current_location = "bridge"
+			else:
+				Global.current_location = "tent"  # Default
+			Global.saved_player_position = Vector2.ZERO
+			Global.saved_position_scene = ""
 	
 	idle_timer.wait_time = IDLE_TIME_LIMIT
-	idle_timer.one_shot = true  # Ensure it only triggers once
+	idle_timer.one_shot = true
 	idle_timer.start()
 
 func _physics_process(delta: float) -> void:

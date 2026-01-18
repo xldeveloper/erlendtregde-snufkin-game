@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bgomool2qdvok"]
+[gd_scene load_steps=14 format=3 uid="uid://bgomool2qdvok"]
 
 [ext_resource type="Texture2D" uid="uid://chvsh4u6wskln" path="res://assets/images/brigde.png" id="1_rwkfx"]
 [ext_resource type="Script" uid="uid://dr1lbga8hn1pl" path="res://scripts/GoHomebutton.gd" id="2_f4jrf"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://3h6p3dgx7ot3" path="res://scripts/FishingZone.gd" id="7_n8jnv"]
 [ext_resource type="PackedScene" uid="uid://dsiap3bhgpfl1" path="res://scenes/fish.tscn" id="8_fish"]
 [ext_resource type="Script" uid="uid://cx3h7ac0uvcq7" path="res://scripts/fish_spawner.gd" id="9_spawner"]
+[ext_resource type="Script" path="res://scripts/map_opener.gd" id="10_map_opener"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qw8kf"]
 animations = [{
@@ -28,7 +29,7 @@ radius = 144.222
 size = Vector2(446, 579)
 
 [node name="FishingScene" type="Node2D"]
-position = Vector2(0, 1)
+position = Vector2(1073, -194)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(579, 591)
@@ -103,5 +104,8 @@ position = Vector2(-112, -337)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FishingZone/Area2D"]
 position = Vector2(12, 195.5)
 shape = SubResource("RectangleShape2D_57s3h")
+
+[node name="MapOpener" type="Node" parent="."]
+script = ExtResource("10_map_opener")
 
 [connection signal="area_entered" from="FishingPlayer/Hook/Area2D" to="FishingPlayer/Hook" method="_on_area_2d_area_entered"]
