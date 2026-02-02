@@ -210,7 +210,6 @@ texture = ExtResource("5_rnkrj")
 stretch_mode = 1
 
 [node name="npc" parent="." instance=ExtResource("5_iw87x")]
-visible = false
 z_index = 1000
 position = Vector2(3351, 990)
 

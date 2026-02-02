@@ -1,4 +1,7 @@
 [
-	{"name": "Moomin mama", "text": "Hello there!"},
-	{"name": "Moomin mama", "text": "I love this place."}
+	{"name": "Moomin mama", "text": "Oh, hello there dear Snufkin! What a lovely day it is."},
+	{"name": "Snufkin", "text": "Good morning, Moomin Mama. Yes, the weather is quite pleasant today."},
+	{"name": "Moomin mama", "text": "Would you like some pancakes? I just made a fresh batch!"},
+	{"name": "Snufkin", "text": "That sounds wonderful. Thank you for your kindness."},
+	{"name": "Moomin mama", "text": "You're always welcome here, my dear friend."}
 ]

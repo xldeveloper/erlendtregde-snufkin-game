@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cyxq3fmkosw2b"]
+[gd_scene load_steps=8 format=3 uid="uid://cyxq3fmkosw2b"]
 
 [ext_resource type="Script" uid="uid://68hyd5t84ktd" path="res://scripts/npc.gd" id="1_ikwb4"]
 [ext_resource type="Texture2D" uid="uid://75a1ecbt8d0l" path="res://assets/images/moominmama.PNG" id="1_j04um"]
+[ext_resource type="Script" path="res://scripts/interact_prompt.gd" id="2_prompt"]
 [ext_resource type="PackedScene" uid="uid://cauib76nahvnp" path="res://dialague/dialague.tscn" id="3_rfem8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7dhfo"]
@@ -38,12 +39,29 @@ dialogue_control_path = NodePath("../Dialouge")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="chat_detection_area"]
 shape = SubResource("CircleShape2D_ssxb7")
 
+[node name="InteractPrompt" type="Label" parent="."]
+visible = false
+z_index = 100
+offset_left = -150.0
+offset_top = -400.0
+offset_right = 150.0
+offset_bottom = -340.0
+theme_override_colors/font_color = Color(0.98, 0.96, 0.92, 1)
+theme_override_colors/font_shadow_color = Color(0.15, 0.18, 0.16, 0.9)
+theme_override_colors/font_outline_color = Color(0.35, 0.31, 0.27, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 28
+text = "Press E to interact"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_prompt")
+
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
 [node name="Dialouge" parent="." instance=ExtResource("3_rfem8")]
-z_index = 101
-dialogue_file = "res://dialague/moominMama.json"
 metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
