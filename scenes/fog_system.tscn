@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://fog_parallax_system"]
+
+[ext_resource type="Script" path="res://scripts/fog_manager.gd" id="1"]
+
+[node name="FogSystem" type="Node"]
+script = ExtResource("1")
+base_density = 0.4
+base_fog_speed = Vector2(0.015, 0.008)
+far_fog_color = Color(0.5, 0.55, 0.68, 1)
+mid_fog_color = Color(0.7, 0.73, 0.78, 1)
+near_fog_color = Color(0.85, 0.87, 0.9, 1)
+foreground_fog_color = Color(0.75, 0.78, 0.82, 1)
+ground_fog_density = 1.6
+auto_map_positions = true

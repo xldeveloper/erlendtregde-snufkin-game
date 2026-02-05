@@ -1,6 +1,7 @@
-[gd_scene load_steps=35 format=3 uid="uid://d0jqutw3c62wv"]
+[gd_scene load_steps=36 format=3 uid="uid://d0jqutw3c62wv"]
 
 [ext_resource type="Texture2D" uid="uid://cfwm52xurxriy" path="res://assets/images/Mountan.png" id="1_52jxg"]
+[ext_resource type="PackedScene" path="res://scenes/fog_system.tscn" id="1_fog_system"]
 [ext_resource type="PackedScene" uid="uid://cu4vgvuaexi2s" path="res://scenes/player.tscn" id="1_g03jv"]
 [ext_resource type="Texture2D" uid="uid://chmjgplg17fty" path="res://assets/images/Woodcolour.png" id="2_k03au"]
 [ext_resource type="Script" uid="uid://b6vu5x0luntm8" path="res://scripts/button.gd" id="3_0tuu4"]
@@ -180,6 +181,7 @@ offset_left = -2731.0
 offset_top = 699.0
 offset_right = 4496.0
 offset_bottom = 1239.0
+scale = Vector2(1.0018263, 1)
 texture = ExtResource("3_po7qr")
 stretch_mode = 1
 
@@ -191,6 +193,9 @@ z_index = 2
 position = Vector2(2588, 683)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("4_e5bnu")
+
+[node name="FogSystem" parent="." instance=ExtResource("1_fog_system")]
+foreground_fog_color = Color(0.95, 0.96, 0.98, 1)
 
 [node name="ParallaxForeground" type="ParallaxBackground" parent="."]
 layer = 100
